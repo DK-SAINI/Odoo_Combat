@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem 
+			id="menu_diet_recommendation_system" 
+			name="Diet Recommendation"
+			sequence="40"
+		/>
+
+		<menuitem 
+			id="menu_user_profile" 
+			name="User Profiles" 
+			action="diet_recommendation_system.action_user_profile"
+			parent="menu_diet_recommendation_system" 
+		/>
+
+		<menuitem 
+			id="menu_user_diet" 
+			name="Diet Plan" 
+			action="diet_recommendation_system.action_diet_plans"
+			parent="menu_diet_recommendation_system" 
+		/>
+	</data>
+</odoo>

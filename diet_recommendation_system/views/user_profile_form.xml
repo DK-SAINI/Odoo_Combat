@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="portal_my_home_menu_user_profile" name="Portal layout : User Profile" inherit_id="portal.portal_breadcrumbs" priority="25">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'user_profile'" class="breadcrumb-item">User Details</li>
+            </xpath>
+        </template>
+
+
+        <template id="user_profile_form" name="User Profile Form">
+            <t t-call="portal.portal_layout">
+                
+                <t t-set="additional_title">User Profile Details</t>
+                
+                <form method="post" action="/user_profile/save">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <div t-attf-class="mb-3 col-xl-6">
+                        <label class="col-form-label" for="name">Age</label>
+                        <input type="number" name="age" t-attf-class="form-control" t-att-value="user.age" />
+                    </div>
+
+                    <div t-attf-class="mb-3 col-xl-6">
+                        <label class="form-label label" for="gender">Gender</label>
+                        <select class="detail form-select" name="gender">
+                            <option value="male" t-att-selected="user.gender=='male'">Male</option>
+                            <option value="female" t-att-selected="user.gender=='female'">Female</option>
+                            <option value="other" t-att-selected="user.gender=='other'">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div t-attf-class="mb-3 col-xl-6">
+                        <label class="col-form-label" for="weight">Weight (kg)</label>
+                        <input type="number" name="weight" t-attf-class="form-control" step="any" t-att-value="user.weight"/>
+                    </div>
+
+                    <div t-attf-class="mb-3 col-xl-6">
+                        <label class="col-form-label" for="weight">Height (cm)</label>
+                        <input type="number" name="height" t-attf-class="form-control" step="any" t-att-value="user.height"/>
+                    </div>
+
+                    <div t-attf-class="mb-3 col-xl-6">
+                        <label class="form-label label" for="health_goal">Health Goal</label>
+                        <select class="detail form-select" name="health_goal">
+                            <option value="weight_loss" t-att-selected="user.health_goal=='weight_loss'">Weight Loss</option>
+                            <option value="weight_gain" t-att-selected="user.health_goal=='weight_gain'">Weight Gain</option>
+                        </select>
+                    </div>
+
+                    <div t-attf-class="mb-3 col-xl-6">
+                        <label class="col-form-label" for="dietary_preferences">Dietary Preferences</label>
+                        <textarea name="dietary_preferences" class="form-control">
+                            <t t-out="user.dietary_preferences"/>
+                        </textarea>
+                    </div>
+
+                    <div t-attf-class="mb-3 col-xl-6">
+                        <label class="col-form-label" for="allergies">Allergies</label>
+                        <textarea name="allergies" class="form-control">
+                            <t t-out="user.allergies"/>
+                        </textarea>
+                    </div>
+
+                    <div class="clearfix mb-5">
+                        <a href="/my/" class="btn btn-secondary me-2">
+                            Discard
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </t>
+        </template>
+    </data>
+</odoo>

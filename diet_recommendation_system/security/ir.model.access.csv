@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+diet_recommendation_system.access_user_profile,access_user_profile,diet_recommendation_system.model_user_profile,base.group_user,1,1,1,1
+diet_recommendation_system.access_diet_plan,access_diet_plan,diet_recommendation_system.model_diet_plan,base.group_user,1,1,1,1

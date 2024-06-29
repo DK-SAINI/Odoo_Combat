@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_diet_plan_form" model="ir.ui.view">
+		    <field name="name">diet.plan.form</field>
+		    <field name="model">diet.plan</field>
+		    <field name="arch" type="xml">
+		        <form string="Diet Plan">
+		            <sheet>
+		                <group>
+		                    <field name="user_profile_id"/>
+		                    <field name="date"/>
+		                    <field name="meal_type"/>
+		                    <field name="meal_description"/>
+		                    <field name="calories"/>
+		                    <field name="protein"/>
+		                    <field name="fat"/>
+		                    <field name="carbs"/>
+		                    <field name="vitamins"/>
+		                    <field name="minerals"/>
+		                </group>
+		            </sheet>
+		        </form>
+		    </field>
+		</record>
+
+		<record id="view_diet_plan_tree" model="ir.ui.view">
+		    <field name="name">diet.plan.tree</field>
+		    <field name="model">diet.plan</field>
+		    <field name="arch" type="xml">
+		        <tree string="Diet Plans">
+		            <field name="user_profile_id"/>
+		            <field name="date"/>
+		            <field name="meal_type"/>
+		            <field name="meal_description"/>
+		            <field name="calories"/>
+		            <field name="protein"/>
+		            <field name="fat"/>
+		            <field name="carbs"/>
+		        </tree>
+		    </field>
+		</record>
+
+		<record id="action_diet_plans" model="ir.actions.act_window">
+		    <field name="name">Diet Plans</field>
+		    <field name="res_model">diet.plan</field>
+		    <field name="view_mode">tree,form</field>
+		</record>
+	</data>
+</odoo>

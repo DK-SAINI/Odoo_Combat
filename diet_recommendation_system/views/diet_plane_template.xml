@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="portal_dite_my_home" name="Diet Plans" customize_show="True" inherit_id="portal.portal_my_home" priority="42">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+                <t t-set="portal_service_category_enable" t-value="True"/>
+            </xpath>
+            <div id="portal_service_category" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/project/static/src/img/tasks.svg'"/>
+                    <t t-set="title">Diet Plans</t>
+                    <t t-set="url" t-value="'/user_diet_plan'"/>
+                    <t t-set="text">Check Your Diet Plans</t>
+                    <t t-set="config_card" t-value="True"/>
+                </t>
+            </div>
+        </template>
+
+        <template id="diet_plans" name="Diet Plans">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h1>My Diet Plans</h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Recipe</th>
+                                <th>Ingredients</th>
+                                <th>Calories</th>
+                                <th>Protein</th>
+                                <th>Carbohydrates</th>
+                                <th>Fats</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="meals" t-as="meal">
+                                <tr>
+                                    <td><t t-esc="meal['Time']"/></td>
+                                    <td><t t-esc="meal['Recipe']"/></td>
+                                    <td>
+                                        <ul>
+                                            <t t-foreach="meal['Ingredients']" t-as="ingredient">
+                                                <li><t t-esc="ingredient"/></li>
+                                            </t>
+                                        </ul>
+                                    </td>
+                                    <td><t t-esc="meal['Calories']"/></td>
+                                    <td><t t-esc="meal['Protein']"/></td>
+                                    <td><t t-esc="meal['Carbohydrates']"/></td>
+                                    <td><t t-esc="meal['Fats']"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+
+        
+    </data>
+</odoo>
